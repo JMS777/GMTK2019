@@ -63,10 +63,10 @@ public class ColliderMovement : MonoBehaviour
             an.SetBool("isJumping", true);
             an.SetBool("isCharging", false);
 
-            rb.velocity = new Vector2(0,-ls[i] / 20);
+            rb.velocity = new Vector2(0,(-ls[i]-1) / 20);
 
             i = 0;
-            an.SetBool("isJumping", false);
+            //an.SetBool("isJumping", false);
         }
     }
 
@@ -88,5 +88,6 @@ public class ColliderMovement : MonoBehaviour
     public void IncreaseJumpPower()
     {
         i++;
+        //Debug.Log(i);
     }
 }
