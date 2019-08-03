@@ -18,7 +18,7 @@ public class ColliderManager : MonoBehaviour
     private CameraShake cameraShake;
 
     private Rigidbody2D colliderRigidbody;
-    
+
 
     // Start is called before the first frame update
     void Start()

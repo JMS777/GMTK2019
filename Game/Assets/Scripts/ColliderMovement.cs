@@ -5,21 +5,18 @@ using UnityEngine;
 public class ColliderMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
-
     private CylinderControl cylinderControl;
 
-    private float startMouseY;
-    private bool mouseDown;
+    // horizontal
+    private float horizontal;
+
+    // vertical
+    private float keyDownTime;
 
     // flags
     public bool isRunning;
-    public bool isIdle;
     public bool isMovingRight;
     public bool isMovingLeft;
-
-    // collision
-    public bool isRising;
-    public bool isFalling;
 
     // Start is called before the first frame update
     void Start()
@@ -31,37 +28,42 @@ public class ColliderMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        horizontal = Mathf.Clamp(Input.GetAxis("Horizontal"),-1,1);
+        //Debug.Log(horizontal);
+
+        if (horizontal > 0)
         {
-            //Debug.Log("Mouse1 down.");
-            mouseDown = true;
-            startMouseY = Input.mousePosition.y;
-            //Debug.Log(startMouseY);
+            isMovingLeft = false;
+            isMovingRight = true;
         }
-        if (Input.GetMouseButtonUp(0))
+        
+        if (horizontal < 0)
         {
-            //Debug.Log("Mouse1 up.");
-            float endMouseY = Input.mousePosition.y;
-            //Debug.Log(endMouseY);
-            float force = startMouseY - endMouseY;
-            //Debug.Log(force);
-            if (force == Mathf.Abs(force))
-            {
-                rb.AddForce(new Vector2(0,force*-2));
-            }
-            mouseDown = false;
+            isMovingLeft = true;
+            isMovingRight = false;
+        }
+
+        //Debug.Log(isMovingLeft);
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            //Debug.Log("Down");
+            keyDownTime = Time.time;
+        }
+
+        if (Input.GetButtonUp("Jump"))
+        {
+            //Debug.Log("Up");
+            float time = Mathf.Clamp(Mathf.Round((Time.time-keyDownTime) * 2), 1, 4)/2;
+            //Debug.Log(time);
+            rb.AddForce(new Vector2(0,time*-250));
         }
     }
 
     // FixedUpdate
     private void FixedUpdate()
     {
-        if (mouseDown)
-        {
-            //Debug.Log("this");
-            float mouseX = Input.GetAxis("Mouse X");
-            rb.AddForce(new Vector2(mouseX * Time.deltaTime * 200, 0));
-        }
+        rb.AddForce(new Vector2(-horizontal * Time.deltaTime * 300, 0));
 
         if (cylinderControl.RotationFactor < 0)
         {
@@ -70,7 +72,6 @@ public class ColliderMovement : MonoBehaviour
         else if (cylinderControl.RotationFactor >= 1)
         {
             transform.position = new Vector3(0.0f, transform.position.y, transform.position.z);
-
         }
     }
 }
