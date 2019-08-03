@@ -174,7 +174,6 @@ MonoBehaviour:
   - {x: 1865, y: 930}
   - {x: 2206, y: 930}
   - {x: 2206, y: 0}
-  cylinderRigidbody: {fileID: 1841348753}
   cylinderTransform: {fileID: 1841348751}
 --- !u!68 &186839082
 EdgeCollider2D:
@@ -202,7 +201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186839080}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 5, z: 0}
   m_LocalScale: {x: 0.01, y: -0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1847100199}
@@ -216,19 +215,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186839080}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: -1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &186839085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +235,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186839080}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d906aca553536af419c91b02ed8b39f7, type: 3}
   m_Name: 
@@ -384,7 +383,7 @@ Camera:
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 106.982414
+  m_FocalLength: 97.732155
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -393,7 +392,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 12.8
+  field of view: 14
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -852,7 +851,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841348750}
-  m_LocalRotation: {x: 0, y: 0.10496235, z: 0, w: 0.99447626}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 19.0985, y: 10, z: 19.0985}
   m_Children:
@@ -861,7 +860,7 @@ Transform:
   - {fileID: 2122149671}
   m_Father: {fileID: 1847100199}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 12.05, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1841348752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -869,13 +868,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841348750}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d1735698418fdd48875be1e9880259a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rpm: 10
-  verticalSpeed: 3
+  colliderTransform: {fileID: 186839083}
 --- !u!54 &1841348753
 Rigidbody:
   m_ObjectHideFlags: 0

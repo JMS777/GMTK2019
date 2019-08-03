@@ -6,7 +6,6 @@ public class ColliderManager : MonoBehaviour
 {
     public Vector2[] vertices;
 
-    public Rigidbody cylinderRigidbody;
     public Transform cylinderTransform;
 
     private Vector3 offset;
@@ -17,20 +16,20 @@ public class ColliderManager : MonoBehaviour
         var collider = gameObject.GetComponent<EdgeCollider2D>();
         collider.points = vertices;
 
-        offset = new Vector3(0.0f, cylinderTransform.localScale.y / 2, -cylinderTransform.localScale.z / 2);
+        //offset = new Vector3(0.0f, cylinderTransform.localScale.y / 2, -cylinderTransform.localScale.z / 2);
 
-        transform.position = offset;
+        //transform.position = offset;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        float circumference = cylinderTransform.localScale.x * Mathf.PI;
-        float rotationFactor = cylinderTransform.rotation.eulerAngles.y / 360;
+        //float circumference = cylinderTransform.localScale.x * Mathf.PI;
+        //float rotationFactor = cylinderTransform.rotation.eulerAngles.y / 360;
 
-        float distanceTravelled = rotationFactor * circumference;
+        //float distanceTravelled = rotationFactor * circumference;
 
-        transform.position = new Vector3(cylinderTransform.position.x - distanceTravelled, cylinderTransform.position.y, cylinderTransform.position.z) + offset;
+        //transform.position = new Vector3(cylinderTransform.position.x - distanceTravelled, cylinderTransform.position.y, cylinderTransform.position.z) + offset;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
