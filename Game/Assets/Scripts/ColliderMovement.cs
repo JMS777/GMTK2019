@@ -5,6 +5,10 @@ using UnityEngine;
 public class ColliderMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private Animator an;
+
+    public GameObject pl;
+    private SpriteRenderer sr;
 
     // horizontal
     private float horizontal;
@@ -14,13 +18,13 @@ public class ColliderMovement : MonoBehaviour
 
     // flags
     public bool isRunning;
-    public bool isMovingRight;
-    public bool isMovingLeft;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        sr = pl.GetComponent<SpriteRenderer>();
+        an = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -31,14 +35,12 @@ public class ColliderMovement : MonoBehaviour
 
         if (horizontal > 0)
         {
-            isMovingLeft = false;
-            isMovingRight = true;
+            sr.flipX = false;
         }
         
         if (horizontal < 0)
         {
-            isMovingLeft = true;
-            isMovingRight = false;
+            sr.flipX = true;
         }
 
         //Debug.Log(isMovingLeft);
