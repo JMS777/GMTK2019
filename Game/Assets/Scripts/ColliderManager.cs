@@ -14,7 +14,7 @@ public class ColliderManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var collider = gameObject.GetComponent<PolygonCollider2D>();
+        var collider = gameObject.GetComponent<EdgeCollider2D>();
         collider.points = vertices;
 
         offset = new Vector3(0.0f, cylinderTransform.localScale.y / 2, -cylinderTransform.localScale.z / 2);

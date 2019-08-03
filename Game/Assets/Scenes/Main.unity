@@ -129,9 +129,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 186839083}
-  - component: {fileID: 186839082}
   - component: {fileID: 186839081}
   - component: {fileID: 186839084}
+  - component: {fileID: 186839082}
+  - component: {fileID: 186839085}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Environment
@@ -152,19 +153,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vertices:
-  - {x: 100, y: 970}
-  - {x: 340, y: 970}
-  - {x: 340, y: 810}
-  - {x: 420, y: 810}
-  - {x: 420, y: 970}
-  - {x: 690, y: 970}
-  - {x: 690, y: 100}
-  - {x: 100, y: 100}
-  - {x: 100, y: 970}
+  - {x: 50, y: 0}
+  - {x: 50, y: 950}
+  - {x: 855, y: 927}
+  - {x: 917, y: 885}
+  - {x: 920, y: 682}
+  - {x: 1031, y: 677}
+  - {x: 1061, y: 697}
+  - {x: 1057, y: 929}
+  - {x: 1320, y: 930}
+  - {x: 1320, y: 930}
+  - {x: 1320, y: 680}
+  - {x: 1420, y: 670}
+  - {x: 1455, y: 690}
+  - {x: 1452, y: 920}
+  - {x: 1512, y: 941}
+  - {x: 1716, y: 930}
+  - {x: 1725, y: 675}
+  - {x: 1872, y: 682}
+  - {x: 1865, y: 930}
+  - {x: 2206, y: 930}
+  - {x: 2206, y: 0}
   cylinderRigidbody: {fileID: 1841348753}
   cylinderTransform: {fileID: 1841348751}
---- !u!60 &186839082
-PolygonCollider2D:
+--- !u!68 &186839082
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -177,22 +190,10 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_EdgeRadius: 0
   m_Points:
-    m_Paths:
-    - - {x: 0, y: 1}
-      - {x: -0.95105654, y: 0.30901697}
-      - {x: -0.5877852, y: -0.80901706}
-      - {x: 0.58778536, y: -0.80901694}
-      - {x: 0.9510565, y: 0.30901712}
+  - {x: -0.5, y: 0}
+  - {x: 0.5, y: 0}
 --- !u!4 &186839083
 Transform:
   m_ObjectHideFlags: 0
@@ -228,6 +229,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &186839085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186839080}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d906aca553536af419c91b02ed8b39f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
 --- !u!4 &350017199 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 0fc327ad498c3c544b6b28bfef0fdbb5,
@@ -885,7 +899,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841348750}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46315fab9b5725a4ba69d403a860053e, type: 3}
   m_Name: 
