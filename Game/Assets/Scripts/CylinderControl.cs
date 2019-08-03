@@ -35,7 +35,7 @@ public class CylinderControl : MonoBehaviour
 
         transform.localScale = new Vector3(diameter, height, diameter);
 
-        offset = new Vector3(0.0f, - transform.localScale.y / 2, transform.localScale.z / 2);
+        offset = new Vector3(0.0f, -transform.localScale.y / 2, transform.localScale.z / 2);
     }
 
     // Update is called once per frame

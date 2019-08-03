@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ColliderMovement : MonoBehaviour
 {
+    private CylinderControl cylinderControl;
     private Rigidbody2D rb;
     private Animator an;
 
@@ -22,9 +23,11 @@ public class ColliderMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cylinderControl = FindObjectOfType<CylinderControl>();
         rb = gameObject.GetComponent<Rigidbody2D>();
         sr = pl.GetComponent<SpriteRenderer>();
         an = gameObject.GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -64,5 +67,14 @@ public class ColliderMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.AddForce(new Vector2(-horizontal * Time.deltaTime * 300, 0));
+
+        if (cylinderControl.RotationFactor < 0)
+        {
+            transform.position = new Vector3(-cylinderControl.imageDimensions.x * cylinderControl.scale, transform.position.y, transform.position.z);
+        }
+        else if (cylinderControl.RotationFactor >= 1)
+        {
+            transform.position = new Vector3(0.0f, transform.position.y, transform.position.z);
+        }
     }
 }
