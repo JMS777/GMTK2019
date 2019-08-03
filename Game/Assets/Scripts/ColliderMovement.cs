@@ -6,6 +6,8 @@ public class ColliderMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
 
+    private CylinderControl cylinderControl;
+
     private float startMouseY;
     private bool mouseDown;
 
@@ -23,6 +25,7 @@ public class ColliderMovement : MonoBehaviour
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        cylinderControl = FindObjectOfType<CylinderControl>();
     }
 
     // Update is called once per frame
@@ -58,6 +61,16 @@ public class ColliderMovement : MonoBehaviour
             //Debug.Log("this");
             float mouseX = Input.GetAxis("Mouse X");
             rb.AddForce(new Vector2(mouseX * Time.deltaTime * 200, 0));
+        }
+
+        if (cylinderControl.RotationFactor < 0)
+        {
+            transform.position = new Vector3(-cylinderControl.imageDimensions.x * cylinderControl.scale, transform.position.y, transform.position.z);
+        }
+        else if (cylinderControl.RotationFactor >= 1)
+        {
+            transform.position = new Vector3(0.0f, transform.position.y, transform.position.z);
+
         }
     }
 }
