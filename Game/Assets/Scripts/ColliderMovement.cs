@@ -11,7 +11,7 @@ public class ColliderMovement : MonoBehaviour
     public SpriteRenderer sr;
     public PlayerManager pm;
 
-    public List<int> ls = new List<int> { 1, 2, 3, 4, 5, 6 };
+    public List<int> ls = new List<int>() { 1, 2, 3, 4, 5, 6 };
     private int i = 0;
 
     // horizontal
@@ -58,6 +58,7 @@ public class ColliderMovement : MonoBehaviour
             }
         }
 
+        Debug.Log(i);
         if (Input.GetButtonUp("Jump"))
         {
             an.SetBool("isJumping", true);

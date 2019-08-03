@@ -225,7 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sr: {fileID: 835831755}
   pm: {fileID: 835831756}
-  ls: 64000000c80000002c01000090010000f4010000
+  ls: 64000000c80000002c01000090010000f4010000f4010000
 --- !u!4 &350017199 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 0fc327ad498c3c544b6b28bfef0fdbb5,
