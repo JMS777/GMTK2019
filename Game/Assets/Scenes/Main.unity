@@ -223,9 +223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d906aca553536af419c91b02ed8b39f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sr: {fileID: 835831755}
   isRunning: 0
-  isMovingRight: 0
-  isMovingLeft: 0
 --- !u!4 &350017199 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 0fc327ad498c3c544b6b28bfef0fdbb5,

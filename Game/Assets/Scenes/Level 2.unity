@@ -291,6 +291,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f000a753c88d2b42a29a74e049dbd17, type: 3}
+--- !u!1 &1018507101 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4822180923510499908, guid: 2f000a753c88d2b42a29a74e049dbd17,
+    type: 3}
+  m_PrefabInstance: {fileID: 1018507100}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &24789243573328448
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1096,12 +1102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d906aca553536af419c91b02ed8b39f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pl: {fileID: 1018507101}
   isRunning: 0
-  isIdle: 0
-  isMovingRight: 0
-  isMovingLeft: 0
-  isRising: 0
-  isFalling: 0
 --- !u!50 &24789244952635043
 Rigidbody2D:
   serializedVersion: 4

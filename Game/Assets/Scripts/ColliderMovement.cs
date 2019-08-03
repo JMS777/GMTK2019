@@ -8,8 +8,7 @@ public class ColliderMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Animator an;
 
-    public GameObject pl;
-    private SpriteRenderer sr;
+    public SpriteRenderer sr;
 
     // horizontal
     private float horizontal;
@@ -25,9 +24,7 @@ public class ColliderMovement : MonoBehaviour
     {
         cylinderControl = FindObjectOfType<CylinderControl>();
         rb = gameObject.GetComponent<Rigidbody2D>();
-        sr = pl.GetComponent<SpriteRenderer>();
         an = gameObject.GetComponent<Animator>();
-
     }
 
     // Update is called once per frame
