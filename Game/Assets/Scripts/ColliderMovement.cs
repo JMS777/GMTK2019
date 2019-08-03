@@ -19,6 +19,6 @@ public class ColliderMovement : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        transform.position = new Vector3(transform.position.x + (speed * Time.deltaTime * horizontal), transform.position.y + (speed*10 * Time.deltaTime * vertical), transform.position.z);
+        transform.position = new Vector3(transform.position.x + (speed * Time.deltaTime * horizontal), transform.position.y + (speed * 5 * Time.deltaTime * vertical), transform.position.z);
     }
 }

@@ -1,52 +1,72 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class ColliderManager : MonoBehaviour
 {
-    public Vector2[] vertices;
-
     public Transform cylinderTransform;
 
+    public float shakeThreshold = 2;
+
+    public string colliderFilename;
+
     private Vector3 offset;
+
+
+    private CameraShake cameraShake;
+
+    private Rigidbody2D colliderRigidbody;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        cameraShake = Camera.main.GetComponent<CameraShake>();
         var collider = gameObject.GetComponent<EdgeCollider2D>();
-        collider.points = vertices;
+        colliderRigidbody = gameObject.GetComponent<Rigidbody2D>();
 
-        //offset = new Vector3(0.0f, cylinderTransform.localScale.y / 2, -cylinderTransform.localScale.z / 2);
+        string[] pointStrings = File.ReadAllLines(getPath() + "/Meshes/" + colliderFilename);
 
-        //transform.position = offset;
+        var points = new List<Vector2>();
+
+        foreach(var pointString in pointStrings)
+        {
+            string[] coordinates = pointString.Split(',');
+
+            if (coordinates.Length > 1)
+            {
+                var vertex = new Vector2(float.Parse(coordinates[0]), float.Parse(coordinates[1]));
+
+                points.Add(vertex);
+            }
+        }
+
+        collider.points = points.ToArray();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    // Get path for given CSV file
+    private static string getPath()
     {
-        //float circumference = cylinderTransform.localScale.x * Mathf.PI;
-        //float rotationFactor = cylinderTransform.rotation.eulerAngles.y / 360;
-
-        //float distanceTravelled = rotationFactor * circumference;
-
-        //transform.position = new Vector3(cylinderTransform.position.x - distanceTravelled, cylinderTransform.position.y, cylinderTransform.position.z) + offset;
+#if UNITY_EDITOR
+        return Application.dataPath;
+#elif UNITY_ANDROID
+return Application.persistentDataPath;// +fileName;
+#elif UNITY_IPHONE
+return GetiPhoneDocumentsPath();// +"/"+fileName;
+#else
+return Application.dataPath;// +"/"+ fileName;
+#endif
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collided with environment");
-        if (collision.gameObject.tag == "Environment")
+        if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Collided with environment");
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("Collided with environment");
-        if (collision.gameObject.tag == "Environment")
-        {
-            Debug.Log("Collided with environment");
+            if (colliderRigidbody.velocity.y >= -shakeThreshold)
+            {
+                cameraShake.Shake(ShakeIntensity.Landing);
+            }
         }
     }
 }
