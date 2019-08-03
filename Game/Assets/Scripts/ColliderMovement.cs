@@ -11,11 +11,11 @@ public class ColliderMovement : MonoBehaviour
     public SpriteRenderer sr;
     public PlayerManager pm;
 
+    public List<int> ls = new List<int> { 1, 2, 3, 4, 5, 6 };
+    private int i = 0;
+
     // horizontal
     private float horizontal;
-
-    // flags
-    public bool isRunning;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +23,13 @@ public class ColliderMovement : MonoBehaviour
         cylinderControl = FindObjectOfType<CylinderControl>();
         an = FindObjectOfType<Animator>();
         rb = gameObject.GetComponent<Rigidbody2D>();
+
+        an.SetBool("isCharging", false);
+        an.SetBool("isJumping", false);
+        an.SetBool("isRunning", false);
+        an.SetBool("isGliding", false);
+        an.SetBool("isIdle", false);
+        an.SetBool("isEnd", false);
     }
 
     // Update is called once per frame
@@ -43,20 +50,24 @@ public class ColliderMovement : MonoBehaviour
 
         //Debug.Log(isMovingLeft);
 
-        if (Input.GetButtonDown("Jump"))
+        if (pm.isGrounded && rb.velocity == Vector2.zero)
         {
-            //Debug.Log("Down");
-            an.SetBool("isCharging",true);
+            if (Input.GetButton("Jump"))
+            {
+                an.SetBool("isCharging", true);
+            }
         }
 
-        //if (pm.isGrounded && Input.GetButton("Jump") && rb.velocity == Vector2.zero)
-        //{
-        //    if (Input.GetButtonUp("Jump"))
-        //    {
-        //        //Debug.Log("Up");
+        if (Input.GetButtonUp("Jump"))
+        {
+            an.SetBool("isJumping", true);
+            an.SetBool("isCharging", false);
 
-        //    }
-        //}
+            rb.velocity = new Vector2(0,-ls[i] / 20);
+
+            i = 0;
+            an.SetBool("isJumping", false);
+        }
     }
 
     // FixedUpdate
@@ -72,5 +83,10 @@ public class ColliderMovement : MonoBehaviour
         {
             transform.position = new Vector3(0.0f, transform.position.y, transform.position.z);
         }
+    }
+
+    public void IncreaseJumpPower()
+    {
+        i++;
     }
 }
