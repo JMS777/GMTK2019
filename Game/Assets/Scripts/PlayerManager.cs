@@ -17,6 +17,7 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         cameraShake = Camera.main.GetComponent<CameraShake>();
+        portalTransform = GameObject.FindGameObjectWithTag("Portal").transform;
     }
 
     // Update is called once per frame

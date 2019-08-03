@@ -519,6 +519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   col: {fileID: 186839085}
+  portalThreshold: 0.1
   isGrounded: 0
 --- !u!61 &835831757
 BoxCollider2D:
@@ -764,7 +765,7 @@ GameObject:
   - component: {fileID: 1293172095}
   m_Layer: 0
   m_Name: Portal
-  m_TagString: Untagged
+  m_TagString: Portal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
