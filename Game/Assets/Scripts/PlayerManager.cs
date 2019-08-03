@@ -5,9 +5,12 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     private CameraShake cameraShake;
+    private GameManager gameManager;
 
     public ColliderMovement col;
+    private Transform portalTransform;
 
+    public float portalThreshold = 0.1f;
     public bool isGrounded;
 
     // Start is called before the first frame update
@@ -32,7 +35,19 @@ public class PlayerManager : MonoBehaviour
         {
             isGrounded = false;
         }
+        CheckDistanceToPortal();
         //Debug.Log(isGrounded);
+    }
+
+    private void CheckDistanceToPortal()
+    {
+        float distanceToPortal = Vector3.Distance(transform.position, portalTransform.position);
+
+        if (distanceToPortal < portalThreshold)
+        {
+            // Play animation
+            gameManager.LevelComplete();
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -40,13 +55,6 @@ public class PlayerManager : MonoBehaviour
         if (collision.gameObject.tag == "Environment")
         {
             cameraShake.Shake(ShakeIntensity.Landing);
-            var contacts = new List<ContactPoint2D>();
-            var n = collision.GetContacts(contacts);
-
-            foreach(var contact in contacts)
-            {
-                Debug.Log(contact);
-            }
         }
     }
 
