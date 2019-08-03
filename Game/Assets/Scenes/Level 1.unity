@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sr: {fileID: 835831755}
+  pm: {fileID: 835831756}
   isRunning: 0
 --- !u!4 &350017199 stripped
 Transform:
@@ -517,6 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bca006324813aa4398b208463df9d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGrounded: 0
 --- !u!61 &835831757
 BoxCollider2D:
   m_ObjectHideFlags: 0

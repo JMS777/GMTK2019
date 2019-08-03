@@ -5,16 +5,14 @@ using UnityEngine;
 public class ColliderMovement : MonoBehaviour
 {
     private CylinderControl cylinderControl;
-    private Rigidbody2D rb;
     private Animator an;
+    private Rigidbody2D rb;
 
     public SpriteRenderer sr;
+    public PlayerManager pm;
 
     // horizontal
     private float horizontal;
-
-    // vertical
-    private float keyDownTime;
 
     // flags
     public bool isRunning;
@@ -23,8 +21,8 @@ public class ColliderMovement : MonoBehaviour
     void Start()
     {
         cylinderControl = FindObjectOfType<CylinderControl>();
+        an = FindObjectOfType<Animator>();
         rb = gameObject.GetComponent<Rigidbody2D>();
-        an = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -48,16 +46,17 @@ public class ColliderMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             //Debug.Log("Down");
-            keyDownTime = Time.time;
+            an.SetBool("isCharging",true);
         }
 
-        if (Input.GetButtonUp("Jump"))
-        {
-            //Debug.Log("Up");
-            float time = Mathf.Clamp(Mathf.Round((Time.time-keyDownTime) * 2), 1, 4)/2;
-            //Debug.Log(time);
-            rb.AddForce(new Vector2(0,time*-250));
-        }
+        //if (pm.isGrounded && Input.GetButton("Jump") && rb.velocity == Vector2.zero)
+        //{
+        //    if (Input.GetButtonUp("Jump"))
+        //    {
+        //        //Debug.Log("Up");
+
+        //    }
+        //}
     }
 
     // FixedUpdate
