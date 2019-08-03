@@ -9,8 +9,7 @@ public class ColliderManager : MonoBehaviour
 
     public float shakeThreshold = 2;
 
-    public EdgeCollider2D[] colliders;
-    public string[] colliderFilenames;
+    public string colliderFilename;
 
     private Vector3 offset;
 
@@ -24,28 +23,26 @@ public class ColliderManager : MonoBehaviour
     void Start()
     {
         cameraShake = Camera.main.GetComponent<CameraShake>();
+        var collider = gameObject.GetComponent<EdgeCollider2D>();
         colliderRigidbody = gameObject.GetComponent<Rigidbody2D>();
 
-        for (int i = 0; i < colliders.Length; i++)
+        string[] pointStrings = File.ReadAllLines(getPath() + "/Meshes/" + colliderFilename);
+
+        var points = new List<Vector2>();
+
+        foreach(var pointString in pointStrings)
         {
-            string[] pointStrings = File.ReadAllLines(getPath() + "/Meshes/" + colliderFilenames[i]);
+            string[] coordinates = pointString.Split(',');
 
-            var points = new List<Vector2>();
-
-            foreach (var pointString in pointStrings)
+            if (coordinates.Length > 1)
             {
-                string[] coordinates = pointString.Split(',');
+                var vertex = new Vector2(float.Parse(coordinates[0]), float.Parse(coordinates[1]));
 
-                if (coordinates.Length > 1)
-                {
-                    var vertex = new Vector2(float.Parse(coordinates[0]), float.Parse(coordinates[1]));
-
-                    points.Add(vertex);
-                }
+                points.Add(vertex);
             }
-
-            colliders[i].points = points.ToArray();
         }
+
+        collider.points = points.ToArray();
     }
 
     // Get path for given CSV file
