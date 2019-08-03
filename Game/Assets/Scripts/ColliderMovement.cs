@@ -6,17 +6,14 @@ public class ColliderMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
 
-    // movement - horizontal
-    private float startMouseY;
-    private float mouseX;
+    // horizontal
+    private float horizontal;
 
-    // movement - vertical
-    private bool mouseDown;
-    private float mouseDownTime;
+    // vertical
+    private float keyDownTime;
 
     // flags
     public bool isRunning;
-    public bool isIdle;
     public bool isMovingRight;
     public bool isMovingLeft;
 
@@ -29,35 +26,41 @@ public class ColliderMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            //Debug.Log("Mouse1 down.");
-            mouseDown = true;
-            mouseDownTime = Time.time;
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            //Debug.Log("Mouse1 up.");
+        horizontal = Mathf.Clamp(Input.GetAxis("Horizontal"),-1,1);
+        //Debug.Log(horizontal);
 
-            float time = Time.time - mouseDownTime;
-            time = Mathf.Clamp(Mathf.Round(time * 2),1,4) / 2;
+        if (horizontal > 0)
+        {
+            isMovingLeft = false;
+            isMovingRight = true;
+        }
+        
+        if (horizontal < 0)
+        {
+            isMovingLeft = true;
+            isMovingRight = false;
+        }
+
+        //Debug.Log(isMovingLeft);
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            //Debug.Log("Down");
+            keyDownTime = Time.time;
+        }
+
+        if (Input.GetButtonUp("Jump"))
+        {
+            //Debug.Log("Up");
+            float time = Mathf.Clamp(Mathf.Round((Time.time-keyDownTime) * 2), 1, 4)/2;
             //Debug.Log(time);
-            float force = time* 300;
-            //Debug.Log(force);
-            rb.AddForce(new Vector2(0,-force));
-            mouseDown = false;
+            rb.AddForce(new Vector2(0,time*-250));
         }
     }
 
     // FixedUpdate
     private void FixedUpdate()
     {
-        if (mouseDown)
-        {
-            mouseX = Mathf.Clamp(Input.GetAxis("Mouse X"),-1,1);
-            
-            //Debug.Log(mouseX);
-            rb.AddForce(new Vector2(mouseX * Time.deltaTime * 500, 0));
-        }
+        rb.AddForce(new Vector2(-horizontal * Time.deltaTime * 300, 0));
     }
 }
