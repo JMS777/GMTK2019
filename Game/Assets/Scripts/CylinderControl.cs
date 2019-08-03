@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class CylinderControl : MonoBehaviour
 {
-    public float rotationalSpeed = 1f;
-
-    private Rigidbody rigidbody;
+    public float rpm = 1f;
+    public float verticalSpeed = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = gameObject.GetComponent<Rigidbody>();
-        rigidbody.AddTorque(new Vector3(0, 3, 0));
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        transform.Rotate(transform.up, horizontal * (2 * Mathf.PI) * Time.deltaTime * rpm);
+        transform.position = new Vector3(transform.position.x, transform.position.y + (verticalSpeed * Time.deltaTime * vertical), transform.position.z);
     }
 }

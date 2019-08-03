@@ -9,22 +9,45 @@ public class ColliderManager : MonoBehaviour
     public Rigidbody cylinderRigidbody;
     public Transform cylinderTransform;
 
+    private Vector3 offset;
+
     // Start is called before the first frame update
     void Start()
     {
         var collider = gameObject.GetComponent<PolygonCollider2D>();
         collider.points = vertices;
+
+        offset = new Vector3(0.0f, cylinderTransform.localScale.y / 2, -cylinderTransform.localScale.z / 2);
+
+        transform.position = offset;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         float circumference = cylinderTransform.localScale.x * Mathf.PI;
+        float rotationFactor = cylinderTransform.rotation.eulerAngles.y / 360;
 
-        float rotationsPerSecond = cylinderRigidbody.angularVelocity.y / (2 * Mathf.PI);
+        float distanceTravelled = rotationFactor * circumference;
 
-        float linearVelocity = circumference / rotationsPerSecond;
+        transform.position = new Vector3(cylinderTransform.position.x - distanceTravelled, cylinderTransform.position.y, cylinderTransform.position.z) + offset;
+    }
 
-        transform.position = new Vector3(linearVelocity * Time.deltaTime, 0, 0);
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collided with environment");
+        if (collision.gameObject.tag == "Environment")
+        {
+            Debug.Log("Collided with environment");
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Collided with environment");
+        if (collision.gameObject.tag == "Environment")
+        {
+            Debug.Log("Collided with environment");
+        }
     }
 }
