@@ -6,6 +6,8 @@ public class PlayerManager : MonoBehaviour
 {
     private CameraShake cameraShake;
 
+    public ColliderMovement col;
+
     public bool isGrounded;
 
     // Start is called before the first frame update
@@ -46,5 +48,10 @@ public class PlayerManager : MonoBehaviour
                 Debug.Log(contact);
             }
         }
+    }
+
+    public void IncreaseJumpPower()
+    {
+        col.IncreaseJumpPower();   
     }
 }
