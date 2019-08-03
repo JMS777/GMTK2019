@@ -225,7 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sr: {fileID: 835831755}
   pm: {fileID: 835831756}
-  ls: 64000000c80000002c01000090010000f4010000
+  ls: 64000000c80000002c01000090010000f4010000f4010000
 --- !u!4 &350017199 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 0fc327ad498c3c544b6b28bfef0fdbb5,
@@ -416,7 +416,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -50}
+  m_LocalPosition: {x: 0, y: 2, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -519,6 +519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   col: {fileID: 186839085}
+  portalThreshold: 0.1
   isGrounded: 0
 --- !u!61 &835831757
 BoxCollider2D:
@@ -764,7 +765,7 @@ GameObject:
   - component: {fileID: 1293172095}
   m_Layer: 0
   m_Name: Portal
-  m_TagString: Untagged
+  m_TagString: Portal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
