@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    private CameraShake cameraShake;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        cameraShake = Camera.main.GetComponent<CameraShake>();
     }
 
     // Update is called once per frame
@@ -18,19 +20,16 @@ public class PlayerManager : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collided with environment");
         if (collision.gameObject.tag == "Environment")
         {
-            Debug.Log("Collided with environment");
-        }
-    }
+            cameraShake.Shake(ShakeIntensity.Landing);
+            var contacts = new List<ContactPoint2D>();
+            var n = collision.GetContacts(contacts);
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("Player: Collided with environment");
-        if (collision.gameObject.tag == "Environment")
-        {
-            Debug.Log("Player 2: Collided with environment");
+            foreach(var contact in contacts)
+            {
+                Debug.Log(contact);
+            }
         }
     }
 }
