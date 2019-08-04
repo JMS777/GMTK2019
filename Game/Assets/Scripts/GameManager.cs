@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public GameObject Player;
+    public GameObject LevelCollider;
     public GameObject Portal;
     public Text InteractionText;
     public GameObject WinPanel;
@@ -15,9 +16,14 @@ public class GameManager : MonoBehaviour
 
     public GameState GameState { get; private set; }
 
+    private ColliderMovement colliderMovement;
+    private Animator playerAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
+        colliderMovement = LevelCollider.GetComponent<ColliderMovement>();
+        playerAnimator = Player.GetComponent<Animator>();
         GameState = GameState.Playing;
         WinPanel.SetActive(false);
         GameOverPanel.SetActive(false);
@@ -32,10 +38,8 @@ public class GameManager : MonoBehaviour
                 HandlePlaying();
                 break;
             case GameState.GameOver:
-                HandleGameOver();
-                break;
             case GameState.Win:
-                HandleWin();
+                HandleEndGame();
                 break;
         }
     }
@@ -57,15 +61,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void HandleGameOver()
-    {
-        if (Input.GetButtonDown("Jump"))
-        {
-            NextLevel();
-        }
-    }
-
-    private void HandleWin()
+    private void HandleEndGame()
     {
         if (Input.GetButtonDown("Jump"))
         {
@@ -92,14 +88,18 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        Debug.Log("Game Over");
         GameState = GameState.GameOver;
 
+        colliderMovement.EnableIsKinematic();
         GameOverPanel.SetActive(true);
     }
 
     public void Win()
     {
-        GameOverPanel.SetActive(true);
+        Debug.Log("Winning");
+        GameState = GameState.Win;
+        colliderMovement.EnableIsKinematic();
 
         WinPanel.SetActive(true);
     }
