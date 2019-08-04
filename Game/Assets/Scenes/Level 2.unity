@@ -206,6 +206,11 @@ PrefabInstance:
       objectReference: {fileID: 892248505}
     - target: {fileID: 2228753171089667747, guid: a09f72252671c824a90fc27d224e4bed,
         type: 3}
+      propertyPath: LevelCollider
+      value: 
+      objectReference: {fileID: 24789244952635047}
+    - target: {fileID: 2228753171089667747, guid: a09f72252671c824a90fc27d224e4bed,
+        type: 3}
       propertyPath: Portal
       value: 
       objectReference: {fileID: 1976824472}
@@ -537,6 +542,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 893541517, guid: 2f000a753c88d2b42a29a74e049dbd17, type: 3}
+      propertyPath: world
+      value: 
+      objectReference: {fileID: 24789244952635045}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f000a753c88d2b42a29a74e049dbd17, type: 3}
 --- !u!1001 &1092980664
@@ -1621,7 +1630,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   sr: {fileID: 914181560}
-  GroundCollider: {fileID: 0}
 --- !u!50 &24789244952635043
 Rigidbody2D:
   serializedVersion: 4

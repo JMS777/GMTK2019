@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+  LevelCollider: {fileID: 0}
   Portal: {fileID: 0}
   InteractionText: {fileID: 0}
   WinPanel: {fileID: 0}

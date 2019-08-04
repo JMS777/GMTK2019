@@ -298,7 +298,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   sr: {fileID: 835831755}
-  GroundCollider: {fileID: 893541516}
 --- !u!1 &326921499 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7811397993005632388, guid: 2f000a753c88d2b42a29a74e049dbd17,
@@ -591,12 +590,6 @@ GameObject:
 --- !u!212 &835831755 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 7811397994115492523, guid: 2f000a753c88d2b42a29a74e049dbd17,
-    type: 3}
-  m_PrefabInstance: {fileID: 7811397994940607840}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &893541516 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 893541516, guid: 2f000a753c88d2b42a29a74e049dbd17,
     type: 3}
   m_PrefabInstance: {fileID: 7811397994940607840}
   m_PrefabAsset: {fileID: 0}
@@ -1511,6 +1504,11 @@ PrefabInstance:
       propertyPath: GameOverPanel
       value: 
       objectReference: {fileID: 2256748451734755618}
+    - target: {fileID: 2228753171089667747, guid: a09f72252671c824a90fc27d224e4bed,
+        type: 3}
+      propertyPath: LevelCollider
+      value: 
+      objectReference: {fileID: 186839080}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a09f72252671c824a90fc27d224e4bed, type: 3}
 --- !u!1001 &2256748451734755617
