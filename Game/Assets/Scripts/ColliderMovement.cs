@@ -51,24 +51,24 @@ public class ColliderMovement : MonoBehaviour
         {
             HandleHorizontalMovement();
             HandleJump();
-        }
 
-        rb.velocity = new Vector2(rb.velocity.x, Mathf.Min(rb.velocity.y, terminalVelocity));
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Min(rb.velocity.y, terminalVelocity));
 
-        if (an.GetBool("isJumping") && rb.velocity.y > 0)
-        {
-            an.SetBool("isJumping", false);
-            an.SetBool("isGliding", true);
-        }
+            if (an.GetBool("isJumping") && rb.velocity.y > 0)
+            {
+                an.SetBool("isJumping", false);
+                an.SetBool("isGliding", true);
+            }
 
-        if (an.GetBool("isGliding") && rb.velocity.y == 0)
-        {
-            an.SetBool("isGliding", false);
-        }
+            if (an.GetBool("isGliding") && rb.velocity.y == 0)
+            {
+                an.SetBool("isGliding", false);
+            }
 
-        if (rb.velocity == Vector2.zero)
-        {
-            an.SetBool("isIdle", true);
+            if (rb.velocity == Vector2.zero)
+            {
+                an.SetBool("isIdle", true);
+            }
         }
 
         //Debug.Log(go.isGrounded);
@@ -186,5 +186,11 @@ public class ColliderMovement : MonoBehaviour
     public void DisableIsKinematic()
     {
         rb.isKinematic = false;
+    }
+
+    public void EnableIsKinematic()
+    {
+        rb.isKinematic = true;
+        rb.velocity = Vector2.zero;
     }
 }
