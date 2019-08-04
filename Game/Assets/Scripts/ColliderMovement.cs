@@ -31,7 +31,7 @@ public class ColliderMovement : MonoBehaviour
     void Start()
     {
         cylinderControl = FindObjectOfType<CylinderControl>();
-        an = FindObjectOfType<Animator>();
+        an = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody2D>();
         gd = FindObjectOfType<GroundDetection>();
 
@@ -41,6 +41,7 @@ public class ColliderMovement : MonoBehaviour
         an.SetBool("isGliding", false);
         an.SetBool("isIdle", false);
         an.SetBool("isEnd", false);
+        an.SetBool("isDead", false);
 
         rb.isKinematic = true;
     }

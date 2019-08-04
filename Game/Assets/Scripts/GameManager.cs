@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         colliderMovement = LevelCollider.GetComponent<ColliderMovement>();
-        playerAnimator = Player.GetComponent<Animator>();
+        playerAnimator = Player.GetComponentInChildren<Animator>();
         GameState = GameState.Playing;
         WinPanel.SetActive(false);
         GameOverPanel.SetActive(false);
