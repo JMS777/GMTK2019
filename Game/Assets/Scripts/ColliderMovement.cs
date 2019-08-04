@@ -20,8 +20,10 @@ public class ColliderMovement : MonoBehaviour
     public AnimationCurve jumpPower;
 
     public SpriteRenderer sr;
-    public PlayerManager pm;
 
+    public GameObject GroundCollider;
+    
+    
     // horizontal
     private float horizontal;
 
@@ -69,7 +71,7 @@ public class ColliderMovement : MonoBehaviour
             an.SetBool("isIdle", true);
         }
 
-        Debug.Log(pm.isGrounded);
+        //Debug.Log(go.isGrounded);
     }
 
     private void HandleHorizontalMovement()
@@ -85,7 +87,7 @@ public class ColliderMovement : MonoBehaviour
         {
             sr.flipX = false;
 
-            if (pm.isGrounded & !Input.GetButton("Jump"))
+            if (true & !Input.GetButton("Jump"))
             {
                 an.SetBool("isIdle", false);
                 an.SetBool("isRunning", true);
@@ -109,7 +111,7 @@ public class ColliderMovement : MonoBehaviour
         {
             sr.flipX = true;
 
-            if (pm.isGrounded & !Input.GetButton("Jump"))
+            if (true & !Input.GetButton("Jump"))
             {
                 an.SetBool("isIdle", false);
                 an.SetBool("isRunning", true);
@@ -148,7 +150,7 @@ public class ColliderMovement : MonoBehaviour
 
     private void HandleJump()
     {
-        if (pm.isGrounded)
+        if (true)
         {
             if (Input.GetButtonDown("Jump"))
             {
