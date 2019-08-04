@@ -12,6 +12,8 @@ public class ColliderMovement : MonoBehaviour
     private float accelStartTime;
     private float jumpStartTime;
 
+    private float fallStarted;
+
     public float maxHVelocity = 5;
     public float terminalVelocity = 2;
 
@@ -52,6 +54,23 @@ public class ColliderMovement : MonoBehaviour
         }
 
         rb.velocity = new Vector2(rb.velocity.x, Mathf.Min(rb.velocity.y, terminalVelocity));
+
+        if (rb.velocity.y == Mathf.Abs(rb.velocity.y))
+        {
+            fallStarted = Time.time;
+            if (an.GetBool("isJumping"))
+            {
+                an.SetBool("isJumping", false);
+            }
+            an.SetBool("isGliding", true);
+        }
+
+        if (rb.velocity == Vector2.zero)
+        {
+            an.SetBool("isIdle", true);
+        }
+
+        Debug.Log(pm.isGrounded);
     }
 
     private void HandleHorizontalMovement()
@@ -66,6 +85,12 @@ public class ColliderMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             sr.flipX = false;
+
+            if (pm.isGrounded & !Input.GetButton("Jump"))
+            {
+                an.SetBool("isIdle", false);
+                an.SetBool("isRunning", true);
+            }
 
             if (speed > 0)
             {
@@ -85,6 +110,12 @@ public class ColliderMovement : MonoBehaviour
         {
             sr.flipX = true;
 
+            if (pm.isGrounded & !Input.GetButton("Jump"))
+            {
+                an.SetBool("isIdle", false);
+                an.SetBool("isRunning", true);
+            }
+
             if (speed >= 0)
             {
                 speed = acceleration.Evaluate(timeSinceAccel) * maxHVelocity;
@@ -101,6 +132,8 @@ public class ColliderMovement : MonoBehaviour
         }
         else
         {
+            an.SetBool("isRunning", false);
+
             if (speed > 0)
             {
                 speed = deceleration.Evaluate(timeSinceAccel) * maxHVelocity;
@@ -116,25 +149,24 @@ public class ColliderMovement : MonoBehaviour
 
     private void HandleJump()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (pm.isGrounded)
         {
-            if (pm.isGrounded)
+            if (Input.GetButtonDown("Jump"))
             {
                 an.SetBool("isCharging", true);
                 jumpStartTime = Time.time;
             }
-        }
 
-        if (Input.GetButtonUp("Jump"))
-        {
-            an.SetBool("isJumping", true);
-            an.SetBool("isCharging", false);
+            if (Input.GetButtonUp("Jump"))
+            {
+                an.SetBool("isIdle", false);
+                an.SetBool("isJumping", true);
+                an.SetBool("isCharging", false);
 
-            rb.velocity = new Vector2(rb.velocity.x, -jumpPower.Evaluate(Time.time - jumpStartTime));
+                rb.velocity = new Vector2(rb.velocity.x, -jumpPower.Evaluate(Time.time - jumpStartTime));
+            }
         }
     }
-
-    
 
     // FixedUpdate
     private void FixedUpdate()
