@@ -91,10 +91,11 @@ public class GameManager : MonoBehaviour
     private void NextLevel()
     {
         int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
-
-        if (nextScene < SceneManager.sceneCount)
+        Debug.Log(nextScene);
+        Debug.Log(SceneManager.sceneCountInBuildSettings);
+        if (nextScene < SceneManager.sceneCountInBuildSettings)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene(nextScene);
         }
         else
         {
@@ -133,7 +134,6 @@ public class GameManager : MonoBehaviour
     private bool InRangeOfPortal()
     {
         float distanceToPortal = Vector3.Distance(Player.transform.position, Portal.transform.position);
-        Debug.Log(distanceToPortal);
         return distanceToPortal <= PortalThreshold;
     }
 }
