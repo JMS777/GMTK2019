@@ -65,7 +65,20 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            NextLevel();
+            if (GameState == GameState.Win)
+            {
+                NextLevel();
+
+            }
+            else if (GameState == GameState.GameOver)
+            {
+                RestartLevel();
+            }
+        }
+
+        else if (Input.GetButtonDown("Cancel"))
+        {
+            LoadMenu();
         }
     }
 
@@ -84,6 +97,16 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
+    }
+
+    private void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void LoadMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void GameOver()
