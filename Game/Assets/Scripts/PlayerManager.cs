@@ -63,4 +63,9 @@ public class PlayerManager : MonoBehaviour
     {
         col.IncreaseJumpPower();   
     }
+
+    public void DisableLevelKinematic()
+    {
+        col.DisableIsKinematic();
+    }
 }

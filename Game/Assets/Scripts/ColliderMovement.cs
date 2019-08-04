@@ -30,6 +30,8 @@ public class ColliderMovement : MonoBehaviour
         an.SetBool("isGliding", false);
         an.SetBool("isIdle", false);
         an.SetBool("isEnd", false);
+
+        rb.isKinematic = true;
     }
 
     // Update is called once per frame
@@ -58,7 +60,6 @@ public class ColliderMovement : MonoBehaviour
             }
         }
 
-        Debug.Log(i);
         if (Input.GetButtonUp("Jump"))
         {
             an.SetBool("isJumping", true);
@@ -90,5 +91,10 @@ public class ColliderMovement : MonoBehaviour
     {
         i++;
         //Debug.Log(i);
+    }
+
+    public void DisableIsKinematic()
+    {
+        rb.isKinematic = false;
     }
 }
