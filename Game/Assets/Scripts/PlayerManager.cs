@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour
     public ColliderMovement col;
 
     public bool isGrounded;
+    public float GroundThreshold = 1.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -35,12 +36,9 @@ public class PlayerManager : MonoBehaviour
         //Debug.Log(isGrounded);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    public void ChargeShake()
     {
-        if (collision.gameObject.tag == "Environment")
-        {
-            cameraShake.Shake(ShakeIntensity.Landing);
-        }
+        cameraShake.Shake(ShakeIntensity.Charge);
     }
 
     public void DisableLevelKinematic()

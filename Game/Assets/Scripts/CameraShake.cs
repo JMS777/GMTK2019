@@ -51,19 +51,25 @@ public class CameraShake : MonoBehaviour
 
     public void Shake(ShakeIntensity intensity)
     {
-        //switch (intensity)
-        //{
-        //    case ShakeIntensity.Landing:
-        //        shakeDuration = 0.2f;
-        //        shakeAmount = 0.15f;
-        //        decreaseFactor = 0.25f;
-        //        this.enabled = true;
-        //        break;
-        //}
+        switch (intensity)
+        {
+            case ShakeIntensity.Landing:
+                shakeDuration = 0.2f;
+                shakeAmount = 0.15f;
+                decreaseFactor = 0.25f;
+                this.enabled = true;
+                break;
+            case ShakeIntensity.Charge:
+                shakeDuration = 0.1f;
+                shakeAmount = 0.05f;
+                decreaseFactor = 1f;
+                this.enabled = true;
+                break;
+        }
     }
 }
 
 public enum ShakeIntensity
 {
-    Landing
+    Landing, Charge
 }

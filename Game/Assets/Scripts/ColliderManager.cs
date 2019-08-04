@@ -61,15 +61,4 @@ return GetiPhoneDocumentsPath();// +"/"+fileName;
 return Application.dataPath;// +"/"+ fileName;
 #endif
     }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            if (colliderRigidbody.velocity.y >= -shakeThreshold)
-            {
-                cameraShake.Shake(ShakeIntensity.Landing);
-            }
-        }
-    }
 }
