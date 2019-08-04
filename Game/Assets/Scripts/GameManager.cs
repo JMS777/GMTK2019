@@ -91,8 +91,6 @@ public class GameManager : MonoBehaviour
     private void NextLevel()
     {
         int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
-        Debug.Log(nextScene);
-        Debug.Log(SceneManager.sceneCountInBuildSettings);
         if (nextScene < SceneManager.sceneCountInBuildSettings)
         {
             SceneManager.LoadScene(nextScene);

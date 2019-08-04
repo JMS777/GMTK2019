@@ -279,9 +279,9 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 20
-      outSlope: 20
+      value: 2
+      inSlope: 16
+      outSlope: 16
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
@@ -289,8 +289,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.5
       value: 10
-      inSlope: 20
-      outSlope: 20
+      inSlope: 16
+      outSlope: 16
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -1388,6 +1388,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1803054886255580370, guid: f8472119709c6c0468a7e15232938ee4,
+        type: 3}
+      propertyPath: m_FocalLength
+      value: 105.322655
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803054886255580370, guid: f8472119709c6c0468a7e15232938ee4,
+        type: 3}
+      propertyPath: field of view
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8472119709c6c0468a7e15232938ee4, type: 3}
 --- !u!1001 &2228753169520136226
@@ -1706,6 +1716,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 7811397994115492524, guid: 2f000a753c88d2b42a29a74e049dbd17,
         type: 3}
       propertyPath: col
@@ -1716,6 +1727,8 @@ PrefabInstance:
       propertyPath: ad
       value: 
       objectReference: {fileID: 1133214797}
+=======
+>>>>>>> b37516b27e4b5e133b812669cf66bdea0e9da0a9
     - target: {fileID: 7811397993005632389, guid: 2f000a753c88d2b42a29a74e049dbd17,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1771,6 +1784,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7811397994115492524, guid: 2f000a753c88d2b42a29a74e049dbd17,
+        type: 3}
+      propertyPath: col
+      value: 
+      objectReference: {fileID: 186839085}
     - target: {fileID: 893541517, guid: 2f000a753c88d2b42a29a74e049dbd17, type: 3}
       propertyPath: world
       value: 

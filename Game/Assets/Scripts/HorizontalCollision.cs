@@ -14,19 +14,33 @@ public class HorizontalCollision : MonoBehaviour
     public Transform tf;
     public SpriteRenderer sr;
 
+    bool canDieOnLeft;
+    bool canDieOnRight;
+
+    Rigidbody2D worldrb;
+
+    Vector2 vel;
+
     // Start is called before the first frame update
     void Start()
     {
         cls = gameObject.GetComponents<Collider2D>();
         Debug.Log(cls.Length);
         gm = FindObjectOfType<GameManager>();
+
+        worldrb = world.attachedRigidbody;
     }
 
     // Update is called once per frame
     void Update()
     {
+        vel = worldrb.velocity;
+                
+        canDieOnLeft = vel.x < 0;
+        canDieOnRight = vel.x > 0;
+
         // either left or right horizontal collider touches world collider
-        if (!an.GetBool("isDead") && cls[0].IsTouching(world))
+        if (!an.GetBool("isDead") && cls[0].IsTouching(world) && canDieOnRight)
         {
             tf.localScale = new Vector3(-tf.localScale.x,tf.localScale.y,tf.localScale.z);
             sr.flipX = false;
@@ -34,7 +48,7 @@ public class HorizontalCollision : MonoBehaviour
             gm.GameOver();
         }
 
-        if (!an.GetBool("isDead") && cls[1].IsTouching(world))
+        if (!an.GetBool("isDead") && cls[1].IsTouching(world) && canDieOnLeft)
         {
             an.SetBool("isDead", true);
             gm.GameOver();

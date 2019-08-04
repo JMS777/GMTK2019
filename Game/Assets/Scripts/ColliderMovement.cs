@@ -67,6 +67,12 @@ public class ColliderMovement : MonoBehaviour
                 an.SetBool("isGliding", true);
             }
 
+            //if (an.GetBool("isJumping") && gd.isGrounded)
+            //{
+            //    an.SetBool("isJumping", false);
+            //    an.SetBool("isIdle", true);
+            //}
+
             if (an.GetBool("isGliding") && gd.isGrounded)
             {
                 an.SetBool("isGliding", false);
@@ -163,6 +169,7 @@ public class ColliderMovement : MonoBehaviour
         {
             if (Input.GetButtonDown("Jump"))
             {
+                rb.velocity = new Vector2(0, 0);
                 jumpStarted = true;
                 an.SetBool("isCharging", true);
                 jumpStartTime = Time.time;

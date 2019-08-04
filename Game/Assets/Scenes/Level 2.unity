@@ -251,7 +251,7 @@ PrefabInstance:
     - target: {fileID: 7526013324908595855, guid: 83a3a9812a1eb6b45a1df5e754ef279f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.435
+      value: 0.46
       objectReference: {fileID: 0}
     - target: {fileID: 7526013324908595855, guid: 83a3a9812a1eb6b45a1df5e754ef279f,
         type: 3}
@@ -376,16 +376,24 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7811397994115492524, guid: 2f000a753c88d2b42a29a74e049dbd17,
-        type: 3}
-      propertyPath: col
-      value: 
-      objectReference: {fileID: 24789244952635042}
     - target: {fileID: 7811397993005632389, guid: 2f000a753c88d2b42a29a74e049dbd17,
         type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7811397994115492524, guid: 2f000a753c88d2b42a29a74e049dbd17,
+        type: 3}
+      propertyPath: col
+      value: 
+      objectReference: {fileID: 24789244952635042}
+    - target: {fileID: 893541517, guid: 2f000a753c88d2b42a29a74e049dbd17, type: 3}
+      propertyPath: world
+      value: 
+      objectReference: {fileID: 24789244952635045}
+    - target: {fileID: 1564710490, guid: 2f000a753c88d2b42a29a74e049dbd17, type: 3}
+      propertyPath: world
+      value: 
+      objectReference: {fileID: 24789244952635045}
     - target: {fileID: 4822180923510499908, guid: 2f000a753c88d2b42a29a74e049dbd17,
         type: 3}
       propertyPath: m_Name
@@ -446,14 +454,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 893541517, guid: 2f000a753c88d2b42a29a74e049dbd17, type: 3}
-      propertyPath: world
-      value: 
-      objectReference: {fileID: 24789244952635045}
-    - target: {fileID: 1564710490, guid: 2f000a753c88d2b42a29a74e049dbd17, type: 3}
-      propertyPath: world
-      value: 
-      objectReference: {fileID: 24789244952635045}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f000a753c88d2b42a29a74e049dbd17, type: 3}
 --- !u!1001 &1092980664
@@ -653,6 +653,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803054886255580370, guid: f8472119709c6c0468a7e15232938ee4,
+        type: 3}
+      propertyPath: m_FocalLength
+      value: 105.322655
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803054886255580370, guid: f8472119709c6c0468a7e15232938ee4,
+        type: 3}
+      propertyPath: field of view
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8472119709c6c0468a7e15232938ee4, type: 3}
@@ -1187,7 +1197,7 @@ Transform:
   m_GameObject: {fileID: 24789244442891777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 9.54925}
-  m_LocalScale: {x: 19.0985, y: 50, z: 19.0985}
+  m_LocalScale: {x: 19.0985, y: 70.32, z: 19.0985}
   m_Children:
   - {fileID: 303219396}
   - {fileID: 24789244381908768}
@@ -1227,7 +1237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderTransform: {fileID: 24789244952635044}
-  imageDimensions: {x: 5000, y: 5000}
+  imageDimensions: {x: 5000, y: 7032}
   yOffset: 0
   scale: 0.01
 --- !u!114 &24789244457566881
@@ -1588,9 +1598,9 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 20
-      outSlope: 20
+      value: 2
+      inSlope: 16
+      outSlope: 16
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
@@ -1598,8 +1608,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.5
       value: 10
-      inSlope: 20
-      outSlope: 20
+      inSlope: 16
+      outSlope: 16
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
