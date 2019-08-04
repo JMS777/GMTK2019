@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
         GameState = GameState.Playing;
         WinPanel.SetActive(false);
         GameOverPanel.SetActive(false);
+        InteractionText.enabled = false;
     }
 
     // Update is called once per frame
@@ -63,6 +64,8 @@ public class GameManager : MonoBehaviour
 
     private void HandleEndGame()
     {
+        InteractionText.enabled = false;
+
         if (Input.GetButtonDown("Jump"))
         {
             if (GameState == GameState.Win)
@@ -130,7 +133,7 @@ public class GameManager : MonoBehaviour
     private bool InRangeOfPortal()
     {
         float distanceToPortal = Vector3.Distance(Player.transform.position, Portal.transform.position);
-
+        Debug.Log(distanceToPortal);
         return distanceToPortal <= PortalThreshold;
     }
 }
