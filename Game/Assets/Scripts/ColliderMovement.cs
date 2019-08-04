@@ -8,11 +8,19 @@ public class ColliderMovement : MonoBehaviour
     private Animator an;
     private Rigidbody2D rb;
 
+    private float speed;
+    private float accelStartTime;
+    private float jumpStartTime;
+
+    public float maxHVelocity = 5;
+    public float terminalVelocity = 2;
+
+    public AnimationCurve acceleration;
+    public AnimationCurve deceleration;
+    public AnimationCurve jumpPower;
+
     public SpriteRenderer sr;
     public PlayerManager pm;
-
-    public List<int> ls = new List<int>() { 1, 2, 3, 4, 5, 6 };
-    private int i = 0;
 
     // horizontal
     private float horizontal;
@@ -37,26 +45,83 @@ public class ColliderMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontal = Mathf.Clamp(Input.GetAxis("Horizontal"),-1,1);
-        //Debug.Log(horizontal);
+        if (!rb.isKinematic)
+        {
+            HandleHorizontalMovement();
+            HandleJump();
+        }
 
-        if (horizontal > 0)
+        rb.velocity = new Vector2(rb.velocity.x, Mathf.Min(rb.velocity.y, terminalVelocity));
+    }
+
+    private void HandleHorizontalMovement()
+    {
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+        {
+            accelStartTime = Time.time;
+        }
+
+        float timeSinceAccel = Time.time - accelStartTime;
+
+        if (Input.GetKey(KeyCode.A))
         {
             sr.flipX = false;
+
+            if (speed > 0)
+            {
+                speed = deceleration.Evaluate(timeSinceAccel) * maxHVelocity;
+
+                if (speed == 0)
+                {
+                    accelStartTime = Time.time;
+                }
+            }
+            else if (speed <= 0)
+            {
+                speed = -acceleration.Evaluate(timeSinceAccel) * maxHVelocity;
+            }
         }
-        
-        if (horizontal < 0)
+        else if (Input.GetKey(KeyCode.D))
         {
             sr.flipX = true;
+
+            if (speed >= 0)
+            {
+                speed = acceleration.Evaluate(timeSinceAccel) * maxHVelocity;
+            }
+            else if (speed < 0)
+            {
+                speed = -deceleration.Evaluate(timeSinceAccel) * maxHVelocity;
+
+                if (speed == 0)
+                {
+                    accelStartTime = Time.time;
+                }
+            }
+        }
+        else
+        {
+            if (speed > 0)
+            {
+                speed = deceleration.Evaluate(timeSinceAccel) * maxHVelocity;
+            }
+            else if (speed < 0)
+            {
+                speed = -deceleration.Evaluate(timeSinceAccel) * maxHVelocity;
+            }
         }
 
-        //Debug.Log(isMovingLeft);
+        rb.velocity = new Vector2(speed, rb.velocity.y);
+    }
 
-        if (pm.isGrounded && rb.velocity == Vector2.zero)
+    private void HandleJump()
+    {
+        if (Input.GetButtonDown("Jump"))
         {
-            if (Input.GetButton("Jump"))
+            if (pm.isGrounded)
             {
                 an.SetBool("isCharging", true);
+                jumpStartTime = Time.time;
             }
         }
 
@@ -65,18 +130,16 @@ public class ColliderMovement : MonoBehaviour
             an.SetBool("isJumping", true);
             an.SetBool("isCharging", false);
 
-            rb.velocity = new Vector2(0,(-ls[i]-1) / 20);
-
-            i = 0;
-            //an.SetBool("isJumping", false);
+            rb.velocity = new Vector2(rb.velocity.x, -jumpPower.Evaluate(Time.time - jumpStartTime));
         }
     }
+
+    
 
     // FixedUpdate
     private void FixedUpdate()
     {
-        rb.AddForce(new Vector2(-horizontal * Time.deltaTime * 300, 0));
-
+        // Moves the collider back to the other side when the cylinder rotates 360.
         if (cylinderControl.RotationFactor < 0)
         {
             transform.position = new Vector3(-cylinderControl.imageDimensions.x * cylinderControl.scale, transform.position.y, transform.position.z);
@@ -89,7 +152,6 @@ public class ColliderMovement : MonoBehaviour
 
     public void IncreaseJumpPower()
     {
-        i++;
         //Debug.Log(i);
     }
 

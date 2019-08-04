@@ -223,6 +223,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d906aca553536af419c91b02ed8b39f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 5
+  acceleration:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.25
+      value: 1
+      inSlope: 6.795283
+      outSlope: 6.795283
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.0680272
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  deceleration:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -23.197262
+      outSlope: -23.197262
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.037414964
+    - serializedVersion: 3
+      time: 0.125
+      value: 0
+      inSlope: -0.09632232
+      outSlope: -0.09632232
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.12454789
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   sr: {fileID: 835831755}
   pm: {fileID: 835831756}
   ls: 64000000c80000002c01000090010000f4010000f4010000
@@ -1262,6 +1311,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7811397994115492524, guid: 2f000a753c88d2b42a29a74e049dbd17,
+        type: 3}
+      propertyPath: col
+      value: 
+      objectReference: {fileID: 186839085}
     - target: {fileID: 7811397993005632389, guid: 2f000a753c88d2b42a29a74e049dbd17,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1317,10 +1371,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7811397994115492524, guid: 2f000a753c88d2b42a29a74e049dbd17,
-        type: 3}
-      propertyPath: col
-      value: 
-      objectReference: {fileID: 186839085}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f000a753c88d2b42a29a74e049dbd17, type: 3}
