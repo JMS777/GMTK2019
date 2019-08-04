@@ -18,8 +18,8 @@ RenderSettings:
   m_FogColor: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.06
-  m_LinearFogStart: 51.16
-  m_LinearFogEnd: 76.9
+  m_LinearFogStart: 54.3
+  m_LinearFogEnd: 95.7
   m_AmbientSkyColor: {r: 0.14150941, g: 0.12682447, b: 0.119482, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -223,7 +223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d906aca553536af419c91b02ed8b39f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 5
+  maxHVelocity: 5
+  terminalVelocity: 3
   acceleration:
     serializedVersion: 2
     m_Curve:
@@ -272,9 +273,32 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  jumpPower:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 10
+      outSlope: 10
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 10
+      inSlope: 10
+      outSlope: 10
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   sr: {fileID: 835831755}
   pm: {fileID: 835831756}
-  ls: 64000000c80000002c01000090010000f4010000f4010000
 --- !u!4 &350017199 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 0fc327ad498c3c544b6b28bfef0fdbb5,
