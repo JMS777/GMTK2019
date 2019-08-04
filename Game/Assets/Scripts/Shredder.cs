@@ -17,7 +17,7 @@ public class Shredder : MonoBehaviour
         {
             gameManager.GameOver();
         }
-        else
+        else if (collision.tag != "Environment")
         {
             Destroy(collision.gameObject);
         }
