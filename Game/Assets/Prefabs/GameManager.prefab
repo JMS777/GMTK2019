@@ -46,4 +46,6 @@ MonoBehaviour:
   Player: {fileID: 0}
   Portal: {fileID: 0}
   InteractionText: {fileID: 0}
+  WinPanel: {fileID: 0}
+  GameOverPanel: {fileID: 0}
   PortalThreshold: 2.6
