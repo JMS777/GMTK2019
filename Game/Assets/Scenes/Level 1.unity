@@ -304,6 +304,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7811397994940607840}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &326921500 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7811397993005632389, guid: 2f000a753c88d2b42a29a74e049dbd17,
+    type: 3}
+  m_PrefabInstance: {fileID: 7811397994940607840}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &350017199 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 0fc327ad498c3c544b6b28bfef0fdbb5,
@@ -937,6 +943,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   world: {fileID: 186839082}
   an: {fileID: 1244896719}
+  tf: {fileID: 326921500}
+  sr: {fileID: 835831755}
 --- !u!61 &1564710491
 BoxCollider2D:
   m_ObjectHideFlags: 0
