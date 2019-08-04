@@ -22,8 +22,9 @@ public class ColliderMovement : MonoBehaviour
     public SpriteRenderer sr;
 
     private GroundDetection gd;
-    
-    
+
+    private bool jumpStarted = false;
+
     // horizontal
     private float horizontal;
 
@@ -51,20 +52,25 @@ public class ColliderMovement : MonoBehaviour
     {
         if (!rb.isKinematic)
         {
-            HandleHorizontalMovement();
+            if (!an.GetBool("isCharging"))
+            {
+                HandleHorizontalMovement();
+            }
+                
             HandleJump();
 
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Min(rb.velocity.y, terminalVelocity));
 
-            if (an.GetBool("isJumping") && rb.velocity.y > 0)
+            if ((an.GetBool("isJumping") && rb.velocity.y > 0) || (an.GetBool("isRunning") && !gd.isGrounded))
             {
                 an.SetBool("isJumping", false);
                 an.SetBool("isGliding", true);
             }
 
-            if (an.GetBool("isGliding") && rb.velocity.y == 0)
+            if (an.GetBool("isGliding") && gd.isGrounded)
             {
                 an.SetBool("isGliding", false);
+                an.SetBool("isIdle", true);
             }
 
             if (rb.velocity == Vector2.zero)
@@ -157,15 +163,18 @@ public class ColliderMovement : MonoBehaviour
         {
             if (Input.GetButtonDown("Jump"))
             {
+                jumpStarted = true;
                 an.SetBool("isCharging", true);
                 jumpStartTime = Time.time;
             }
 
-            if (Input.GetButtonUp("Jump"))
+            if (jumpStarted && Input.GetButtonUp("Jump"))
             {
                 an.SetBool("isIdle", false);
                 an.SetBool("isJumping", true);
                 an.SetBool("isCharging", false);
+
+                jumpStarted = false;
 
                 rb.velocity = new Vector2(rb.velocity.x, -jumpPower.Evaluate(Time.time - jumpStartTime));
             }
