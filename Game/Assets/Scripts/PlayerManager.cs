@@ -8,6 +8,8 @@ public class PlayerManager : MonoBehaviour
 
     public ColliderMovement col;
 
+    public Audio ad;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,5 +24,30 @@ public class PlayerManager : MonoBehaviour
     public void DisableLevelKinematic()
     {
         col.DisableIsKinematic();
+    }
+
+    public void SoundSteps()
+    {
+        ad.SoundSteps();
+    }
+
+    public void SoundJump()
+    {
+        ad.SoundJump();
+    }
+
+    public void SoundFalling()
+    {
+        ad.SoundFalling();
+    }
+
+    public void SoundCharge()
+    {
+        ad.SoundCharge();
+    }
+
+    public void SoundDeath()
+    {
+        ad.SoundDeath();
     }
 }
