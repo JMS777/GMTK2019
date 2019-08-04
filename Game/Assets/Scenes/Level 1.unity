@@ -279,9 +279,9 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 20
-      outSlope: 20
+      value: 2
+      inSlope: 16
+      outSlope: 16
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
@@ -289,8 +289,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.5
       value: 10
-      inSlope: 20
-      outSlope: 20
+      inSlope: 16
+      outSlope: 16
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -1566,11 +1566,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7811397994115492524, guid: 2f000a753c88d2b42a29a74e049dbd17,
-        type: 3}
-      propertyPath: col
-      value: 
-      objectReference: {fileID: 186839085}
     - target: {fileID: 7811397993005632389, guid: 2f000a753c88d2b42a29a74e049dbd17,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1626,6 +1621,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7811397994115492524, guid: 2f000a753c88d2b42a29a74e049dbd17,
+        type: 3}
+      propertyPath: col
+      value: 
+      objectReference: {fileID: 186839085}
     - target: {fileID: 893541517, guid: 2f000a753c88d2b42a29a74e049dbd17, type: 3}
       propertyPath: world
       value: 
