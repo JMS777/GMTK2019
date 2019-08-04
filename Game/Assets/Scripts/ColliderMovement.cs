@@ -12,8 +12,6 @@ public class ColliderMovement : MonoBehaviour
     private float accelStartTime;
     private float jumpStartTime;
 
-    private float fallStarted;
-
     public float maxHVelocity = 5;
     public float terminalVelocity = 2;
 
@@ -55,14 +53,15 @@ public class ColliderMovement : MonoBehaviour
 
         rb.velocity = new Vector2(rb.velocity.x, Mathf.Min(rb.velocity.y, terminalVelocity));
 
-        if (rb.velocity.y == Mathf.Abs(rb.velocity.y))
+        if (an.GetBool("isJumping") && rb.velocity.y > 0)
         {
-            fallStarted = Time.time;
-            if (an.GetBool("isJumping"))
-            {
-                an.SetBool("isJumping", false);
-            }
+            an.SetBool("isJumping", false);
             an.SetBool("isGliding", true);
+        }
+
+        if (an.GetBool("isGliding") && rb.velocity.y == 0)
+        {
+            an.SetBool("isGliding", false);
         }
 
         if (rb.velocity == Vector2.zero)
