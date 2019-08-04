@@ -209,7 +209,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &186839085
 MonoBehaviour:
@@ -238,13 +238,13 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.25
+      time: 0.125
       value: 1
-      inSlope: 6.795283
-      outSlope: 6.795283
+      inSlope: 12.55412
+      outSlope: 12.55412
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.0680272
+      inWeight: 0.06462586
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -262,7 +262,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.037414964
     - serializedVersion: 3
-      time: 0.125
+      time: 0.065008506
       value: 0
       inSlope: -0.09632232
       outSlope: -0.09632232
@@ -279,17 +279,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 10
-      outSlope: 10
+      inSlope: 20
+      outSlope: 20
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
+      time: 0.5
       value: 10
-      inSlope: 10
-      outSlope: 10
+      inSlope: 20
+      outSlope: 20
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334

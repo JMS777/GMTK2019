@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
     private bool InRangeOfPortal()
     {
         float distanceToPortal = Vector3.Distance(Player.transform.position, Portal.transform.position);
-
+        Debug.Log(distanceToPortal);
         return distanceToPortal <= PortalThreshold;
     }
 }
