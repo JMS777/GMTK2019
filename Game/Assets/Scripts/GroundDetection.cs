@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GroundDetection : MonoBehaviour
@@ -16,9 +17,12 @@ public class GroundDetection : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (cl.IsTouching(world))
+        List<Collider2D> colliders = new List<Collider2D>();
+        cl.OverlapCollider(new ContactFilter2D(), colliders);
+
+        if (colliders.Exists(p => p.tag == "Environment"))
         {
             isGrounded = true;
         }
