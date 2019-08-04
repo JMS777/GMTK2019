@@ -1716,7 +1716,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 7811397994115492524, guid: 2f000a753c88d2b42a29a74e049dbd17,
         type: 3}
       propertyPath: col
@@ -1727,8 +1726,6 @@ PrefabInstance:
       propertyPath: ad
       value: 
       objectReference: {fileID: 1133214797}
-=======
->>>>>>> b37516b27e4b5e133b812669cf66bdea0e9da0a9
     - target: {fileID: 7811397993005632389, guid: 2f000a753c88d2b42a29a74e049dbd17,
         type: 3}
       propertyPath: m_LocalPosition.x
