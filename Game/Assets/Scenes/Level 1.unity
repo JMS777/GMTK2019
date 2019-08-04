@@ -299,6 +299,12 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   sr: {fileID: 835831755}
+--- !u!95 &220910627 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7811397994115492526, guid: 2f000a753c88d2b42a29a74e049dbd17,
+    type: 3}
+  m_PrefabInstance: {fileID: 7811397994940607840}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &326921499 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7811397993005632388, guid: 2f000a753c88d2b42a29a74e049dbd17,
@@ -738,8 +744,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1244896718}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1564710490
 MonoBehaviour:
@@ -754,7 +760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   world: {fileID: 186839082}
-  an: {fileID: 1244896719}
+  an: {fileID: 220910627}
   tf: {fileID: 326921500}
   sr: {fileID: 835831755}
 --- !u!61 &1564710491
@@ -986,7 +992,7 @@ Transform:
   - {fileID: 1841348751}
   - {fileID: 186839083}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1852701712
 GameObject:
@@ -1501,7 +1507,7 @@ PrefabInstance:
     - target: {fileID: 2256748452257242535, guid: e82f6b12f379100459284955e784e2c0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2256748452257242535, guid: e82f6b12f379100459284955e784e2c0,
         type: 3}
