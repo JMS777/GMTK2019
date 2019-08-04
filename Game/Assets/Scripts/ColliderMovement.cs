@@ -169,6 +169,7 @@ public class ColliderMovement : MonoBehaviour
         {
             if (Input.GetButtonDown("Jump"))
             {
+                rb.velocity = new Vector2(0, 0);
                 jumpStarted = true;
                 an.SetBool("isCharging", true);
                 jumpStartTime = Time.time;

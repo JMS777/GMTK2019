@@ -19,6 +19,8 @@ public class HorizontalCollision : MonoBehaviour
 
     Rigidbody2D worldrb;
 
+    Vector2 vel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,8 +34,8 @@ public class HorizontalCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 vel = worldrb.velocity;
-
+        vel = worldrb.velocity;
+                
         canDieOnLeft = vel.x < 0;
         canDieOnRight = vel.x > 0;
 
