@@ -21,7 +21,7 @@ public class ColliderMovement : MonoBehaviour
 
     public SpriteRenderer sr;
 
-    public GameObject GroundCollider;
+    private GroundDetection gd;
     
     
     // horizontal
@@ -33,6 +33,7 @@ public class ColliderMovement : MonoBehaviour
         cylinderControl = FindObjectOfType<CylinderControl>();
         an = FindObjectOfType<Animator>();
         rb = gameObject.GetComponent<Rigidbody2D>();
+        gd = FindObjectOfType<GroundDetection>();
 
         an.SetBool("isCharging", false);
         an.SetBool("isJumping", false);
@@ -87,7 +88,7 @@ public class ColliderMovement : MonoBehaviour
         {
             sr.flipX = false;
 
-            if (true & !Input.GetButton("Jump"))
+            if (gd.isGrounded & !Input.GetButton("Jump"))
             {
                 an.SetBool("isIdle", false);
                 an.SetBool("isRunning", true);
@@ -111,7 +112,8 @@ public class ColliderMovement : MonoBehaviour
         {
             sr.flipX = true;
 
-            if (true & !Input.GetButton("Jump"))
+
+            if (gd.isGrounded & !Input.GetButton("Jump"))
             {
                 an.SetBool("isIdle", false);
                 an.SetBool("isRunning", true);
@@ -150,7 +152,7 @@ public class ColliderMovement : MonoBehaviour
 
     private void HandleJump()
     {
-        if (true)
+        if (gd.isGrounded)
         {
             if (Input.GetButtonDown("Jump"))
             {
