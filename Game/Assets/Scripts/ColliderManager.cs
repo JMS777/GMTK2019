@@ -8,6 +8,7 @@ public class ColliderManager : MonoBehaviour
     public Transform cylinderTransform;
 
     public float shakeThreshold = 2;
+    public float yOffset = 0;
 
     public EdgeCollider2D[] colliders;
     public string[] colliderFilenames;
@@ -38,7 +39,7 @@ public class ColliderManager : MonoBehaviour
 
                 if (coordinates.Length > 1)
                 {
-                    var vertex = new Vector2(float.Parse(coordinates[0]), float.Parse(coordinates[1]));
+                    var vertex = new Vector2(float.Parse(coordinates[0]), float.Parse(coordinates[1]) + yOffset);
 
                     points.Add(vertex);
                 }

@@ -19,7 +19,6 @@ public class DeathPit : MonoBehaviour
     void Update()
     {
         float distance = Vector3.Distance(player.position, transform.position);
-        Debug.Log(distance);
 
         if (distance <= radius)
         {

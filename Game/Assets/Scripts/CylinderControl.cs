@@ -6,6 +6,7 @@ public class CylinderControl : MonoBehaviour
 {
     public Transform colliderTransform;
     public Vector2 imageDimensions;
+    public int yOffset;
 
     [Tooltip("Units Per Pixel")]
     public float scale = 0.01f;
