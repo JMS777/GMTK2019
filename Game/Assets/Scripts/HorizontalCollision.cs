@@ -18,6 +18,7 @@ public class HorizontalCollision : MonoBehaviour
     void Start()
     {
         cls = gameObject.GetComponents<Collider2D>();
+        Debug.Log(cls.Length);
         gm = FindObjectOfType<GameManager>();
     }
 
