@@ -22,18 +22,33 @@ public class PlayerManager : MonoBehaviour
     {
         RaycastHit2D[] hits = new RaycastHit2D[2];
         Physics2D.RaycastNonAlloc(transform.position, new Vector2(0,-1), hits);
-        //Debug.Log(hits[1]);
-        float distance = Vector2.Distance(transform.position, hits[1].point);
-        //Debug.Log(distance);
-        if (distance < 0.7)
+        Vector2? pos = null;
+
+        for (int i = 0; i < hits.Length; i++)
         {
-            isGrounded = true;
+            if (hits[i].collider.tag == "Environment")
+            {
+                pos = hits[i].point;
+            }
+        }
+
+        if (pos.HasValue)
+        {
+            float distance = Vector2.Distance(transform.position, pos.Value);
+
+            if (distance < 0.7)
+            {
+                isGrounded = true;
+            }
+            else
+            {
+                isGrounded = false;
+            }
         }
         else
         {
             isGrounded = false;
         }
-        //Debug.Log(isGrounded);
     }
 
     public void ChargeShake()
