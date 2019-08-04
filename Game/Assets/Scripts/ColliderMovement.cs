@@ -73,7 +73,7 @@ public class ColliderMovement : MonoBehaviour
                 an.SetBool("isIdle", true);
             }
 
-            if (rb.velocity == Vector2.zero)
+            if (rb.velocity == Vector2.zero && gd.isGrounded)
             {
                 an.SetBool("isIdle", true);
             }
@@ -95,7 +95,7 @@ public class ColliderMovement : MonoBehaviour
         {
             sr.flipX = false;
 
-            if (gd.isGrounded & !Input.GetButton("Jump"))
+            if (gd.isGrounded & !an.GetBool("isCharging"))
             {
                 an.SetBool("isIdle", false);
                 an.SetBool("isRunning", true);
@@ -120,7 +120,7 @@ public class ColliderMovement : MonoBehaviour
             sr.flipX = true;
 
 
-            if (gd.isGrounded & !Input.GetButton("Jump"))
+            if (gd.isGrounded & !an.GetBool("isCharging"))
             {
                 an.SetBool("isIdle", false);
                 an.SetBool("isRunning", true);
