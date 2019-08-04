@@ -1799,8 +1799,8 @@ MonoBehaviour:
   - {fileID: 24789244952635048}
   colliderFilenames:
   - Level_2-1_CollisionMap.csv
-  - Level_2-2_CollisionMap.csv
-  - Level_2-3_CollisionMap.csv
+  - Level_2-2_CollisionMap
+  - Level_2-3_CollisionMap
 --- !u!1 &24789244952635047
 GameObject:
   m_ObjectHideFlags: 0

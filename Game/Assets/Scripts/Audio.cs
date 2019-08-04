@@ -37,7 +37,7 @@ public class Audio : MonoBehaviour
     public void SoundJump()
     {
         ad.clip = Jump;
-        ad.Play(0);
+        //ad.Play(0);
     }
 
     public void SoundFalling()
@@ -49,7 +49,7 @@ public class Audio : MonoBehaviour
     public void SoundCharge()
     {
         ad.clip = Charge;
-        //ad.Play(0);
+        ad.Play(0);
     }
 
     public void SoundDeath()

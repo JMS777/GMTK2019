@@ -29,7 +29,11 @@ public class ColliderManager : MonoBehaviour
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            string[] pointStrings = File.ReadAllLines(getPath() + "/Meshes/" + colliderFilenames[i]);
+            var textAsset = Resources.Load<TextAsset>(colliderFilenames[i]);
+            Debug.Log(colliderFilenames[i]);
+            var text = textAsset.text;
+            string[] pointStrings = text.Split("\n"[0]);
+            //string[] pointStrings = File.ReadAllLines(getPath() + "/Meshes/" + colliderFilenames[i]);
 
             var points = new List<Vector2>();
 
