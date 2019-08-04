@@ -150,11 +150,6 @@ public class ColliderMovement : MonoBehaviour
         }
     }
 
-    public void IncreaseJumpPower()
-    {
-        //Debug.Log(i);
-    }
-
     public void DisableIsKinematic()
     {
         rb.isKinematic = false;
